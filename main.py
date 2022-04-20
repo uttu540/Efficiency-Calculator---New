@@ -19,101 +19,101 @@ def landingPage():
 def post():
     questionWeight, maxAnswerScore = 4, 4
     maxASMultipleChoice = 10
-    answerScore, answerScore2,answerScore3, answerScore4, answerScore5, answerScore6, answerScore7, answerScore8, answerScore9, answerScore10, answerScore11, answerScore12, answerScore13, answerScore14, answerScore15, answerScore16,answerScore17, answerScore18  = ([] for _ in range(18))
-    sectionWeight1 = 12
-    sectionWeight2 = 16
+    answerScore, answerScore2,answerScore3, answerScore4, answerScore5, answerScore6, answerScore7, answerScore8, answerScore9, answerScore10, answerScore11, answerScore12, answerScore13, answerScore14, answerScore15, answerScore16,answerScore17, answerScore18, answerScore19, answerScore20, answerScore21, answerScore22, answerScore23, answerScore24, answerScore25  = ([] for _ in range(25))
+    sectionWeight1 = 16
+    sectionWeight2 = 24
     sectionWeight3 = 12
-    sectionWeight4 = 8
-    sectionWeight5 = 8
+    sectionWeight4 = 16
+    sectionWeight5 = 16
     sectionWeight6 = 16
-    questionScore, questionScore2, questionScore3, questionScore4, questionScore5, questionScore6, questionScore7, questionScore8, questionScore9, questionScore10, questionScore11, questionScore12, questionScore13, questionScore14, questionScore15, questionScore16, questionScore17, questionScore18 = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    questionScore, questionScore2, questionScore3, questionScore4, questionScore5, questionScore6, questionScore7, questionScore8, questionScore9, questionScore10, questionScore11, questionScore12, questionScore13, questionScore14, questionScore15, questionScore16, questionScore17, questionScore19, questionScore20, questionScore21, questionScore22, questionScore23, questionScore24, questionScore25 =  (0 for _ in range(25))
     if request.method == "POST":
         participationOfTrainee = request.form.get('q49_waysTo49')
 
         if participationOfTrainee == 'Daily Attendance':
             answerScore.append(1)
         
-        elif participationOfTrainee == 'Daily attendance plus asking questions to students to check their attentiveness and then mark attendance':
+        elif participationOfTrainee == 'Daily attendance and asking questions to check students&#x27; attentiveness':
             answerScore.append(2)
         
-        elif participationOfTrainee == 'Using platform like Kahoot to take pools, quizzes to check attentiveness and then mark attendance':
+        elif participationOfTrainee == 'Using digital tools (e.g., Kahoot, Poll Everywhere) to take polls, quizzes to check attentiveness and then mark attendance':
             answerScore.append(3)
 
-        elif participationOfTrainee == 'Using digital tool which helps to check daily attendance, integration with platforms like Kahoot and provide dashboard to analyze.':
+        elif participationOfTrainee == 'Digital tools to check daily attendance with various integrations to provide daily analytics':
             answerScore.append(4)
 
         questionScore = sum(answerScore)/ maxAnswerScore
         weightedQuestionScore = questionScore * questionWeight
 
-        stakeholderCommunication  = request.form.get('q50_whatWays')
+        stakeholderCommunication  = request.form.get('q50_howDo50')
 
-        if stakeholderCommunication == 'Verbal communication such as one-to-one meetings, group discussions, classes etc.':
+        if stakeholderCommunication == 'In-person conversations, such as one-to-one meetings, group discussions, classes etc.':
             answerScore2.append(1)
         
-        elif stakeholderCommunication == 'Email communication':
+        elif stakeholderCommunication == 'Email':
             answerScore2.append(2)
         
-        elif stakeholderCommunication == 'Email communication and meetings':
+        elif stakeholderCommunication == 'Email and meetings':
             answerScore2.append(3)
 
-        elif stakeholderCommunication == 'Through an LMS or LXP platform which helps to communicate seamlessly using emails, meetings, and announcements for important things':
+        elif stakeholderCommunication == 'Through an LMS or LXP':
             answerScore2.append(4)
 
         questionScore2 = sum(answerScore2)/ maxAnswerScore
         weightedQuestionScore2 = questionScore2 * questionWeight
 
 
-        bigChallenges  = request.form.get('q51_whatAre51')
+        bigChallenges  = request.form.get('q51_whatIs')
 
-        if bigChallenges == 'Using multiple platform for different tasks such as (notify students about content, tests, and analyze quiz response etc.)':
+        if bigChallenges == 'There are too many platforms for different tasks':
             answerScore3.append(1)
         
-        elif bigChallenges == 'Managing course delivery seamlessly.':
+        elif bigChallenges == 'Managing course delivery seamlessly':
             answerScore3.append(2)
         
-        elif bigChallenges == 'Assessment of quizzes, tests':
+        elif bigChallenges == 'Managing tests and quizzes':
             answerScore3.append(3)
 
-        elif bigChallenges == 'Dealing with feedback and analyzing it':
+        elif bigChallenges == 'Managing and analyzing feedback':
             answerScore3.append(4)
 
         questionScore3 = sum(answerScore3)/ maxAnswerScore
         weightedQuestionScore3 = questionScore3 * questionWeight
 
+        historicalData  = request.form.get('q64_whereDo')
 
-        sectionScore = sectionWeight1 * (weightedQuestionScore + weightedQuestionScore2 + weightedQuestionScore3)
-
-        #Section 2 
-
-        feedbackTools = request.form.get('q46_whatAre46')
-
-        if feedbackTools == 'Daily feedback using pools and surveys':
+        if historicalData == 'I don&#x27;t keep record of such data':
             answerScore4.append(1)
         
-        elif feedbackTools == 'Only Post Training Survey':
+        elif historicalData == 'Log Book':
             answerScore4.append(2)
         
-        elif feedbackTools == 'Pre- and Post-Training Survey':
+        elif historicalData == 'Multiple platform for different types of historical data':
             answerScore4.append(3)
 
-        elif feedbackTools == 'Pre- and Post-Training and In the middle of the course':
+        elif historicalData == 'An online platform where all types of historical data is collected centrally and stored':
             answerScore4.append(4)
 
         questionScore4 = sum(answerScore4)/ maxAnswerScore
         weightedQuestionScore4 = questionScore4 * questionWeight
 
-        realTimeAnalysis  = request.form.get('q19_whatDo')
 
-        if realTimeAnalysis == 'Analyze it yourself by going through each and every feedback':
+        sectionScore = sectionWeight1 * (weightedQuestionScore + weightedQuestionScore2 + weightedQuestionScore3 + weightedQuestionScore4)
+
+        #Section 2 
+
+        typeFeedback = request.form.get('q46_whatType')
+
+        if typeFeedback == 'I don&#x27;t collect feedback from my attendees':
             answerScore5.append(1)
         
-        elif realTimeAnalysis == 'Your team analyze by going through each feedback and use digital tools such as Microsoft Excel':
+        elif typeFeedback == 'Post Training Survey':
             answerScore5.append(2)
         
-        elif realTimeAnalysis == 'BI Tools such as Power BI, Tableau etc.':
+        elif typeFeedback == 'Daily feedback using polls and surveys':
             answerScore5.append(3)
 
-        elif realTimeAnalysis == 'LMS or LXP tools which maintains the feedback data, analyze it for you and provide inferences.':
+        elif typeFeedback == 'Pre-Assessment to assess expectations and Post-Training surveys':
             answerScore5.append(4)
 
         questionScore5 = sum(answerScore5)/ maxAnswerScore
@@ -122,140 +122,221 @@ def post():
 
         surveyCreation  = request.form.get('q20_howDo')
 
-        if surveyCreation == 'Writing down on a paper':
+        if surveyCreation == 'Through hardcopy surveys handed out in the training event':
             answerScore6.append(1)
         
-        elif surveyCreation == 'Training managing team creating a survey on paper':
+        elif surveyCreation == 'Through standard, online forms':
             answerScore6.append(2)
         
-        elif surveyCreation == 'Feedback form creation tool':
+        elif surveyCreation == 'Through personalized, online forms':
             answerScore6.append(3)
 
-        elif surveyCreation == 'Feedback form creation tool which provides in built and scientific templates for form creation':
+        elif surveyCreation == 'Through personalized, online forms using science-backed templates':
             answerScore6.append(4)
 
         questionScore6 = sum(answerScore6)/ maxAnswerScore
         weightedQuestionScore6 = questionScore6 * questionWeight
 
-        takeFeedback  = request.form.get('q22_name22[]')
 
-        if takeFeedback == 'Monitoring and Analyzing the work and behavior of the employees':
+        feedbackTools  = request.form.get('q61_whatTools')
+
+        if feedbackTools == 'I don&#x27;t use tools to collect feedback (verbal or written feedback)':
             answerScore7.append(1)
         
-        elif takeFeedback == 'One to one feedback':
+        elif feedbackTools == 'Through hard-copy surveys handed out in the training event':
             answerScore7.append(2)
         
-        elif takeFeedback == 'Google forms, Survey Monkey etc.':
+        elif feedbackTools == 'I collect feedback with standard survey tools like Google Forms, Survey Monkey, etc.':
             answerScore7.append(3)
 
-        elif takeFeedback == 'Integrated feedback tool in the platform you use which provide in built templates and provides analysis':
+        elif feedbackTools == 'I collect feedback with a tool that is integrated in a platform I use':
             answerScore7.append(4)
 
-        questionScore7 = sum(answerScore7)/ maxASMultipleChoice
+        questionScore7 = sum(answerScore7)/ maxAnswerScore
         weightedQuestionScore7 = questionScore7 * questionWeight
 
 
-        sectionScore2 = sectionWeight2 * (weightedQuestionScore4 + weightedQuestionScore5 + weightedQuestionScore6 + weightedQuestionScore7)
+        realTimeAnalysis  = request.form.get('q19_howDo')
 
-        #Section 3 
-        # New Way of doing and Evaluating Training
-
-        differentWaysEvaluatingTraining = request.form.get('q25_name25[]')
-
-        if differentWaysEvaluatingTraining == 'Analyze the performance of the employee manually without setting any parameters':
+        if realTimeAnalysis == 'I analyze data manually from hard-copy feedback I received from attendees':
             answerScore8.append(1)
         
-        elif differentWaysEvaluatingTraining == 'ROI calculator':
+        elif realTimeAnalysis == 'I analyze data with a digital spreadsheet (Excel, Google Sheets, etc)':
             answerScore8.append(2)
         
-        elif differentWaysEvaluatingTraining == 'ROI calculator and through feedback received from the employees':
+        elif realTimeAnalysis == 'I rely on a team/team member that analyzes the data and provides analytics with BI Tools (i.e. PowerBI, Tableau, etc)':
             answerScore8.append(3)
 
-        elif differentWaysEvaluatingTraining == 'Using training evaluation platform or an efficiency calculator':
+        elif realTimeAnalysis == 'I have an LMS or LXP that analyzes feedback and provides recommendations or suggestions.':
             answerScore8.append(4)
 
-        questionScore8 = sum(answerScore8)/ maxASMultipleChoice
+        questionScore8 = sum(answerScore8)/ maxAnswerScore
         weightedQuestionScore8 = questionScore8 * questionWeight
 
-        toolsEaseTraining  = request.form.get('q26_toolsProvided')
+        frequecyOfFeedback  = request.form.get('q55_howFrequently')
 
-        if toolsEaseTraining == 'Separate profile':
+        if frequecyOfFeedback == 'Each quarter':
             answerScore9.append(1)
         
-        elif toolsEaseTraining == 'Content Accessibility':
+        elif frequecyOfFeedback == 'Every 6 months':
             answerScore9.append(2)
         
-        elif toolsEaseTraining == 'Recording of sessions':
+        elif frequecyOfFeedback == 'At the end of each course':
             answerScore9.append(3)
 
-        elif toolsEaseTraining == 'All of the above':
+        elif frequecyOfFeedback == 'I have real-time data that i can always consult':
             answerScore9.append(4)
 
         questionScore9 = sum(answerScore9)/ maxAnswerScore
         weightedQuestionScore9 = questionScore9 * questionWeight
 
+        midCourseFeedback  = request.form.get('q66_doYou66')
 
-        toolsProvidedTrainers  = request.form.get('q47_whatAre47')
-
-        if toolsProvidedTrainers == 'Cloud Presentations':
-            answerScore10.append(1)
+        if midCourseFeedback == 'Yes':
+            answerScore10.append(0)
         
-        elif toolsProvidedTrainers == 'Engagement tools such as polling tools, google classroom, slack etc.':
-            answerScore10.append(2)
-        
-        elif toolsProvidedTrainers == 'Interactive Dashboards':
-            answerScore10.append(3)
-
-        elif toolsProvidedTrainers == 'All of the above':
+        elif midCourseFeedback == 'No':
             answerScore10.append(4)
 
         questionScore10 = sum(answerScore10)/ maxAnswerScore
         weightedQuestionScore10 = questionScore10 * questionWeight
 
 
-        sectionScore3 = sectionWeight3 * (weightedQuestionScore8 + weightedQuestionScore9 + weightedQuestionScore10)
+        sectionScore2 = sectionWeight2 * (weightedQuestionScore5 + weightedQuestionScore6 + weightedQuestionScore7 + weightedQuestionScore8 + weightedQuestionScore9 + weightedQuestionScore10)
+
+        #Section 3 
+        # New Way of doing and Evaluating Training
+
+        differentWaysEvaluatingTraining = request.form.get('q65_whatAre')
+
+        if differentWaysEvaluatingTraining == 'Analyze the performance of the employee manually without any parameters':
+            answerScore11.append(1)
+        
+        elif differentWaysEvaluatingTraining == 'ROI calculator':
+            answerScore11.append(2)
+        
+        elif differentWaysEvaluatingTraining == 'ROI calculator and through feedback received from the employees':
+            answerScore11.append(3)
+
+        elif differentWaysEvaluatingTraining == 'Using training evaluation platform or an efficiency calculator':
+            answerScore11.append(4)
+
+        questionScore11 = sum(answerScore11)/ maxAnswerScore
+        weightedQuestionScore11 = questionScore11 * questionWeight
+
+        toolsEaseTraining  = request.form.get('q26_whatTools26')
+
+        if toolsEaseTraining == 'Individualized Learning':
+            answerScore12.append(1)
+        
+        elif toolsEaseTraining == 'Accessible Content':
+            answerScore12.append(2)
+        
+        elif toolsEaseTraining == 'Recording of sessions':
+            answerScore12.append(3)
+
+        elif toolsEaseTraining == 'All of the above':
+            answerScore12.append(4)
+
+        questionScore12 = sum(answerScore12)/ maxAnswerScore
+        weightedQuestionScore12 = questionScore12 * questionWeight
+
+
+        toolsProvidedTrainers  = request.form.get('q47_whatTools47')
+
+        if toolsProvidedTrainers == 'Cloud Presentations':
+            answerScore13.append(1)
+        
+        elif toolsProvidedTrainers == 'Engagement Tools (Polling tools, google classroom, slack)':
+            answerScore13.append(2)
+        
+        elif toolsProvidedTrainers == 'Interactive Dashboards':
+            answerScore13.append(3)
+
+        elif toolsProvidedTrainers == 'All of the above':
+            answerScore13.append(4)
+
+        questionScore13 = sum(answerScore13)/ maxAnswerScore
+        weightedQuestionScore13 = questionScore13 * questionWeight
+
+
+        sectionScore3 = sectionWeight3 * (weightedQuestionScore11 + weightedQuestionScore12 + weightedQuestionScore13)
 
         # Section 4
 
         # Real-time Communication and Collaboration Systems
 
-        meaniningfulCommunication  = request.form.get('q31_name31[]')
+        meaniningfulCommunication  = request.form.get('q62_whatAre62')
 
         if meaniningfulCommunication == 'Classroom debates':
-            answerScore11.append(1)
+            answerScore14.append(1)
         
         elif meaniningfulCommunication == 'Discussions offline or online':
-            answerScore11.append(2)
+            answerScore14.append(2)
         
-        elif meaniningfulCommunication == 'Presentation with Q&amp;A':
-            answerScore11.append(3)
+        elif meaniningfulCommunication == 'Presentation with Q+A':
+            answerScore14.append(3)
 
-        elif meaniningfulCommunication == 'A platform where you can have discussion forums, graded discussions as well as video conferencing tools for presentation and Q&amp;A':
-            answerScore11.append(4)
+        elif meaniningfulCommunication == 'A platform with multiple opportunities for effective communication (discussion forum, video conferencing tools, etc)':
+            answerScore14.append(4)
 
-        questionScore11 = sum(answerScore11)/ maxASMultipleChoice
-        weightedQuestionScore11 = questionScore11 * questionWeight
+        questionScore14 = sum(answerScore14)/ maxAnswerScore
+        weightedQuestionScore14 = questionScore14 * questionWeight
 
 
-        collaborativeTraining  = request.form.get('q32_name32[]')
+        collaborativeTraining  = request.form.get('q63_howDo63')
 
-        if collaborativeTraining == 'Offline classroom discussion':
-            answerScore12.append(1)
+        if collaborativeTraining == 'Offline discussion':
+            answerScore15.append(1)
         
         if collaborativeTraining == 'Discussion Forums':
-            answerScore12.append(2)
+            answerScore15.append(2)
         
-        if collaborativeTraining == 'Tools such as slack, Miro':
-            answerScore12.append(3)
+        if collaborativeTraining == 'Digital Tools like Slack, Miro, etc.':
+            answerScore15.append(3)
 
-        if collaborativeTraining == 'A all-in-one platform where you can create discussion forums, use tools like Miro, Google Workspace etc.':
-            answerScore12.append(4)
+        if collaborativeTraining == 'A platform where I utilize digital tools and create discussion forums':
+            answerScore15.append(4)
 
-        questionScore12 = sum(answerScore12)/ maxASMultipleChoice
-        weightedQuestionScore12 = questionScore12 * questionWeight
+        questionScore15 = sum(answerScore15)/ maxAnswerScore
+        weightedQuestionScore15 = questionScore15 * questionWeight
+
+        shareInformation = request.form.get('q63_howDo63')
+
+        if shareInformation == 'Inform everyone using a flier placed on a bulletin board':
+            answerScore16.append(1)
+        
+        if shareInformation == 'Share information with organization leaders, who will pass-down the information':
+            answerScore16.append(2)
+        
+        if shareInformation == 'Using communication apps like WhatsApp, Slack,etc.':
+            answerScore16.append(3)
+
+        if shareInformation == 'A training platform with notifications, emails, and messaging built into the platform':
+            answerScore16.append(4)
+
+        questionScore16 = sum(answerScore16)/ maxAnswerScore
+        weightedQuestionScore16 = questionScore16 * questionWeight
+
+        collaborateDifferentEntities  = request.form.get('q58_typeA')
+
+        if collaborateDifferentEntities == 'Offline group discussion and team building activities':
+            answerScore17.append(1)
+        
+        if collaborateDifferentEntities == 'Group meetings and brainstorming within the group':
+            answerScore17.append(2)
+        
+        if collaborateDifferentEntities == 'Encouraging participation and allowing everyone to share their perspective':
+            answerScore17.append(3)
+
+        if collaborateDifferentEntities == 'An online platform which provides group discussion boards, meetings, brainstorming softwares etc':
+            answerScore17.append(4)
+
+        questionScore17 = sum(answerScore17)/ maxAnswerScore
+        weightedQuestionScore17 = questionScore17 * questionWeight
 
 
-        sectionScore4 = sectionWeight4 * (weightedQuestionScore11 + weightedQuestionScore12)
+        sectionScore4 = sectionWeight4 * (weightedQuestionScore14 + weightedQuestionScore15 + weightedQuestionScore16 + weightedQuestionScore17)
 
 
         # Section 5
@@ -265,35 +346,70 @@ def post():
         buildCommunity  = request.form.get('q48_doYou48')
 
         if buildCommunity == 'Yes':
-            answerScore13.append(4)
+            answerScore18.append(4)
         
         elif buildCommunity == 'No':
-            answerScore13.append(0)
+            answerScore18.append(0)
         
 
-        questionScore13 = sum(answerScore13)/ maxAnswerScore
-        weightedQuestionScore13 = questionScore13 * questionWeight
+        questionScore18 = sum(answerScore18)/ maxAnswerScore
+        weightedQuestionScore18 = questionScore18 * questionWeight
 
 
-        marketingPromotion  = request.form.get('q36_whatAre36[]')
+        alumniEvents = request.form.get('q59_howOften')
+
+        if alumniEvents == 'I don&#x27;t conduct alumni events':
+            answerScore19.append(1)
+        
+        elif alumniEvents == 'Every 3 months':
+            answerScore19.append(4)
+        
+        elif alumniEvents == 'Every 6-9 months':
+            answerScore19.append(3)
+
+        elif alumniEvents == 'Once a year':
+            answerScore19.append(2)
+
+        questionScore19 = sum(answerScore19)/ maxAnswerScore
+        weightedQuestionScore19 = questionScore19 * questionWeight
+        
+        
+        marketingPromotion  = request.form.get('q60_howDo60')
 
         if marketingPromotion == 'Word of mouth':
-            answerScore14.append(1)
+            answerScore20.append(1)
         
         elif marketingPromotion == 'Webinars':
-            answerScore14.append(2)
+            answerScore20.append(2)
         
         elif marketingPromotion == 'Emails':
-            answerScore14.append(3)
+            answerScore20.append(3)
 
         elif marketingPromotion == 'Marketing campaigns on social media platforms':
-            answerScore14.append(4)
+            answerScore20.append(4)
 
-        questionScore14 = sum(answerScore14)/ maxASMultipleChoice
-        weightedQuestionScore14 = questionScore14 * questionWeight
+        questionScore20 = sum(answerScore20)/ maxAnswerScore
+        weightedQuestionScore20 = questionScore20 * questionWeight
+
+        checkOnEmployees  = request.form.get('q67_howDo67')
+
+        if checkOnEmployees == 'I don&#x27;t check and notify the employee':
+            answerScore21.append(1)
+        
+        elif checkOnEmployees == 'Notify the employee through email':
+            answerScore21.append(2)
+        
+        elif checkOnEmployees == 'One-to-one discussion':
+            answerScore21.append(3)
+
+        elif checkOnEmployees == 'Notify the employee through the platform the organization is using to provide training and encouraging the employee through one-to-one meeting':
+            answerScore21.append(4)
+
+        questionScore21 = sum(answerScore21)/ maxASMultipleChoice
+        weightedQuestionScore21 = questionScore21 * questionWeight
 
 
-        sectionScore5 = sectionWeight5 * (weightedQuestionScore13 + weightedQuestionScore14)
+        sectionScore5 = sectionWeight5 * (weightedQuestionScore18 + weightedQuestionScore19 + weightedQuestionScore20 + weightedQuestionScore21)
 
         #Section 6
 
@@ -302,61 +418,61 @@ def post():
         provideDetails  = request.form.get('q39_doYou')
 
         if provideDetails == 'Yes':
-            answerScore15.append(4)
+            answerScore22.append(4)
         
         elif provideDetails == 'No':
-            answerScore15.append(0)
+            answerScore22.append(0)
         
 
-        questionScore15 = sum(answerScore15)/ maxAnswerScore
-        weightedQuestionScore15 = questionScore15 * questionWeight
+        questionScore22 = sum(answerScore22)/ maxAnswerScore
+        weightedQuestionScore22 = questionScore22 * questionWeight
 
 
         provideRubrics  = request.form.get('q40_doYou40')
 
         if provideRubrics == 'Yes':
-            answerScore16.append(4)
+            answerScore23.append(4)
         
         elif provideRubrics == 'No':
-            answerScore16.append(0)
+            answerScore23.append(0)
 
-        questionScore16 = sum(answerScore16)/ maxAnswerScore
-        weightedQuestionScore16 = questionScore16 * questionWeight
+        questionScore23 = sum(answerScore23)/ maxAnswerScore
+        weightedQuestionScore23 = questionScore23 * questionWeight
 
         informationToTrainers  = request.form.get('q43_name43[]')
 
-        if informationToTrainers == 'Information about the trainees':
-            answerScore17.append(1)
+        if informationToTrainers == 'Trainee Information':
+            answerScore24.append(1)
         
-        elif informationToTrainers == 'Access to course materials such as presentations, syllabus':
-            answerScore17.append(2)
+        elif informationToTrainers == 'Course materials (presentations, syllabus, etc.)':
+            answerScore24.append(2)
         
-        elif informationToTrainers == 'List of courses which can help the trainers to revise for better delivery of course':
-            answerScore17.append(3)
+        elif informationToTrainers == 'A list of courses to help the trainers revise for better course delivery':
+            answerScore24.append(3)
 
-        questionScore17 = sum(answerScore17)/ maxASMultipleChoice
-        weightedQuestionScore17 = questionScore17 * questionWeight
+        questionScore24 = sum(answerScore24)/ maxASMultipleChoice
+        weightedQuestionScore24 = questionScore24 * questionWeight
 
 
         informationToTrainees = request.form.get('q44_name44[]')
 
-        if informationToTrainees == 'Course Pre-requirements':
-            answerScore18.append(1)
+        if informationToTrainees == 'Course prerequisites':
+            answerScore25.append(1)
         
-        elif informationToTrainees == 'Course syllabus':
-            answerScore18.append(2)
+        elif informationToTrainees == 'Syllabus':
+            answerScore25.append(2)
         
-        elif informationToTrainees == 'Trainer’s details':
-            answerScore18.append(3)
+        elif informationToTrainees == 'Trainer&#x27;s Details':
+            answerScore25.append(3)
 
-        elif informationToTrainees == 'Learnings from the course':
-            answerScore18.append(4)
+        elif informationToTrainees == 'Course objectives':
+            answerScore25.append(4)
 
-        questionScore18 = sum(answerScore18)/ maxASMultipleChoice
-        weightedQuestionScore18 = questionScore18 * questionWeight
+        questionScore25 = sum(answerScore25)/ maxASMultipleChoice
+        weightedQuestionScore25 = questionScore25 * questionWeight
 
 
-        sectionScore6 = sectionWeight6 * (weightedQuestionScore15 + weightedQuestionScore16 + weightedQuestionScore17 + weightedQuestionScore18)
+        sectionScore6 = sectionWeight6 * (weightedQuestionScore22 + weightedQuestionScore23 + weightedQuestionScore24 + weightedQuestionScore25)
 
 
 
